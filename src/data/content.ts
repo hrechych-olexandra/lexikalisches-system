@@ -177,18 +177,18 @@ export const aboutSection = {
 export const reviewsSection = {
   title: 'Ось що кажуть мої учні',
   items: [
-    { name: 'Інна', image: withBase('/img/review-anna.webp'), note: 'про системність і дисципліну' },
+    { name: 'Інна', image: withBase('/img/review-anna.webp'), note: 'з нуля до B2 за 2 роки' },
     {
       name: 'Поліна',
       image: withBase('/img/review-inna.webp'),
-      note: 'про підготовку до кожного уроку',
+      note: 'про системність і дисципліну',
     },
     {
       name: 'Георгій',
       image: withBase('/img/review-heorhii.webp'),
       note: 'навчається в університеті Німеччини',
     },
-    { name: 'Анна', image: withBase('/img/review-polina.webp'), note: 'з нуля до B2 за 2 роки' },
+    { name: 'Анна', image: withBase('/img/review-polina.webp'), note: 'про підготовку до кожного уроку' },
   ],
 };
 
