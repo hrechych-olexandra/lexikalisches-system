@@ -125,7 +125,7 @@ export const programSection = {
     },
     {
       question: 'Як систематизувати?',
-      text: 'За якими принципами групувати слова, щоб вони трималися купи й підказували одне одного.',
+      text: 'Як організувати слова так, щоб вони не губилися й були готові до подальшої роботи.',
     },
     {
       question: 'Як не забувати слова?',
@@ -177,18 +177,18 @@ export const aboutSection = {
 export const reviewsSection = {
   title: 'Ось що кажуть мої учні',
   items: [
-    { name: 'Анна', image: withBase('/img/review-anna.webp'), note: 'з нуля до B2 за 2 роки' },
-    { name: 'Інна', image: withBase('/img/review-inna.webp'), note: 'про системність і дисципліну' },
+    { name: 'Інна', image: withBase('/img/review-anna.webp'), note: 'про системність і дисципліну' },
+    {
+      name: 'Поліна',
+      image: withBase('/img/review-inna.webp'),
+      note: 'про підготовку до кожного уроку',
+    },
     {
       name: 'Георгій',
       image: withBase('/img/review-heorhii.webp'),
       note: 'навчається в університеті Німеччини',
     },
-    {
-      name: 'Поліна',
-      image: withBase('/img/review-polina.webp'),
-      note: 'про підготовку до кожного уроку',
-    },
+    { name: 'Анна', image: withBase('/img/review-polina.webp'), note: 'з нуля до B2 за 2 роки' },
   ],
 };
 
@@ -218,7 +218,7 @@ export const faqSection = {
     },
     {
       q: 'Чи потрібні платні застосунки?',
-      a: 'Ні. Система будується на інструментах, якими ви вже користуєтесь, — а до них ви додаєте порядок.',
+      a: 'Ні. У вебінарі я покажу кілька інструментів, доступних у безкоштовних версіях, і поясню, як використовувати їх для системної роботи з лексикою.',
     },
   ],
 };
