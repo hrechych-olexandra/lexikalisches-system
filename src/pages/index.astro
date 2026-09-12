@@ -1,0 +1,35 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Nav from '../components/Nav.astro';
+import Hero from '../components/Hero.astro';
+import Pain from '../components/Pain.astro';
+import Benefits from '../components/Benefits.astro';
+import Program from '../components/Program.astro';
+import Format from '../components/Format.astro';
+import About from '../components/About.astro';
+import Reviews from '../components/Reviews.astro';
+import Faq from '../components/Faq.astro';
+import FinalCta from '../components/FinalCta.astro';
+import Footer from '../components/Footer.astro';
+---
+
+<Layout>
+  <Nav />
+  <main>
+    <Hero />
+    <Pain />
+    <Benefits />
+    <Program />
+    <Format />
+    <About />
+    <Reviews />
+    <FinalCta />
+    <Faq />
+  </main>
+  <Footer />
+</Layout>
+
+<script>
+  import { init } from '../scripts/animations';
+  init();
+</script>

@@ -1,0 +1,158 @@
+---
+import { painSection } from '../data/content';
+---
+
+<section class="pain band" id="pain">
+  <div class="shell">
+    <div class="pain__head">
+      <h2 class="pain__title" data-reveal>{painSection.title}</h2>
+
+      <div class="pain__video" data-reveal>
+        <button
+          class="video"
+          type="button"
+          data-yt={painSection.video.id}
+          aria-label={`Відтворити відео: ${painSection.video.caption}`}
+        >
+          <img src={painSection.video.cover} alt="" loading="lazy" decoding="async" />
+          <span class="video__play" aria-hidden="true">
+            <svg width="20" height="24" viewBox="0 0 20 24" fill="currentColor">
+              <path d="M0 1.6v20.8a1 1 0 0 0 1.54.84l16.3-10.4a1 1 0 0 0 0-1.68L1.54.76A1 1 0 0 0 0 1.6Z"
+              ></path>
+            </svg>
+          </span>
+        </button>
+      </div>
+    </div>
+
+    <ul class="pain__list">
+      {
+        painSection.items.map((item) => (
+          <li class="pain__item" data-reveal>
+            <span class="pain__glyph" aria-hidden="true">
+              <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
+                <path
+                  d="M3 3l10 10M13 3L3 13"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                />
+              </svg>
+            </span>
+            <h3 class="pain__item-title">{item.title}</h3>
+            <p class="pain__item-text">{item.text}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .pain {
+    background: var(--color-forest);
+    color: var(--color-cream);
+  }
+
+  .pain__head {
+    display: grid;
+    gap: 2.5rem;
+    align-items: center;
+    margin-bottom: clamp(3rem, 6vw, 5rem);
+  }
+
+  .pain__title {
+    font-size: var(--text-section);
+  }
+
+  .video {
+    position: relative;
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 0;
+    border-radius: 18px;
+    overflow: hidden;
+    cursor: pointer;
+    background: var(--color-forest-deep);
+    aspect-ratio: 16 / 9;
+  }
+
+  .video img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.7s var(--ease-out-soft);
+  }
+
+  .video:hover img {
+    transform: scale(1.04);
+  }
+
+  .video__play {
+    position: absolute;
+    inset: 0;
+    margin: auto;
+    width: 66px;
+    height: 66px;
+    display: grid;
+    place-items: center;
+    padding-left: 4px;
+    border-radius: 50%;
+    background: var(--color-cream);
+    color: var(--color-forest);
+    transition:
+      transform 0.4s var(--ease-out-soft),
+      background-color 0.4s var(--ease-out-soft);
+  }
+
+  .video:hover .video__play {
+    transform: scale(1.1);
+    background: var(--color-gold);
+  }
+
+  .pain__list {
+    display: grid;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .pain__item {
+    border-top: 1px solid rgb(254 249 238 / 0.22);
+    padding-top: 1.5rem;
+  }
+
+  .pain__glyph {
+    display: grid;
+    place-items: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: rgb(255 100 100 / 0.16);
+    color: var(--color-coral);
+    margin-bottom: 1.1rem;
+  }
+
+  .pain__item-title {
+    font-size: clamp(1.1rem, 1.7vw, 1.3rem);
+    margin-bottom: 0.7rem;
+  }
+
+  .pain__item-text {
+    font-size: 0.95rem;
+    color: rgb(254 249 238 / 0.75);
+  }
+
+  @media (min-width: 860px) {
+    .pain__head {
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 4rem;
+    }
+
+    .pain__list {
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 2.5rem;
+    }
+  }
+</style>

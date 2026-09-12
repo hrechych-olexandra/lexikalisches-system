@@ -1,0 +1,146 @@
+---
+import { programSection } from '../data/content';
+---
+
+<section class="program band" id="program">
+  <div class="shell">
+    <header class="program__head">
+      <p class="eyebrow program__eyebrow" data-reveal>{programSection.eyebrow}</p>
+      <h2 class="program__title" data-reveal>{programSection.title}</h2>
+      <p class="program__lead" data-reveal>{programSection.lead}</p>
+    </header>
+
+    <ol class="steps">
+      {
+        programSection.steps.map((step, i) => (
+          <li class="step" data-reveal>
+            <span class="step__num">{String(i + 1).padStart(2, '0')}</span>
+            <div class="step__body">
+              <h3 class="step__q">{step.question}</h3>
+              <p class="step__text">{step.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ol>
+
+    <div class="program__slides" data-reveal>
+      <p class="program__slides-label">Зазирнути всередину</p>
+      <div class="program__slides-row">
+        {
+          programSection.slides.map((src) => (
+            <img src={src} alt="Слайд із вебінару" loading="lazy" decoding="async" />
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .program {
+    background: var(--color-cream-deep);
+  }
+
+  .program__head {
+    max-width: 42rem;
+    margin-bottom: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .program__eyebrow {
+    color: var(--color-coral);
+    margin-bottom: 1rem;
+  }
+
+  .program__title {
+    font-size: var(--text-section);
+    margin-bottom: 1.2rem;
+  }
+
+  .program__lead {
+    font-size: clamp(1rem, 1.5vw, 1.1rem);
+    color: rgb(20 30 25 / 0.7);
+  }
+
+  .steps {
+    list-style: none;
+    counter-reset: step;
+    border-top: 1px solid rgb(20 30 25 / 0.12);
+  }
+
+  .step {
+    display: grid;
+    grid-template-columns: auto minmax(0, 1fr);
+    gap: 1.25rem;
+    padding-block: 1.75rem;
+    border-bottom: 1px solid rgb(20 30 25 / 0.12);
+    transition: background-color 0.4s var(--ease-out-soft);
+  }
+
+  .step:hover {
+    background: rgb(254 249 238 / 0.7);
+  }
+
+  .step__num {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--color-coral);
+    letter-spacing: 0.04em;
+    translate: 0 0.35em;
+  }
+
+  .step__q {
+    font-size: clamp(1.15rem, 2.2vw, 1.65rem);
+    margin-bottom: 0.5rem;
+  }
+
+  .step__text {
+    font-size: 0.95rem;
+    color: rgb(20 30 25 / 0.68);
+    max-width: 46rem;
+  }
+
+  .program__slides {
+    margin-top: clamp(3rem, 6vw, 4.5rem);
+  }
+
+  .program__slides-label {
+    font-family: var(--font-body);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: rgb(20 30 25 / 0.45);
+    margin-bottom: 1.1rem;
+  }
+
+  .program__slides-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+  }
+
+  .program__slides-row img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    object-fit: cover;
+    border-radius: 14px;
+    border: 1px solid rgb(20 30 25 / 0.08);
+    box-shadow: 0 18px 40px -30px rgb(20 30 25 / 0.7);
+    transition: transform 0.6s var(--ease-out-soft);
+  }
+
+  .program__slides-row img:hover {
+    transform: translateY(-6px);
+  }
+
+  @media (min-width: 760px) {
+    .step {
+      grid-template-columns: 5rem minmax(0, 1fr);
+      gap: 2rem;
+      padding-block: 2.25rem;
+      padding-inline: 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,54 @@
+---
+import '../styles/global.css';
+import { site } from '../data/content';
+
+interface Props {
+  title?: string;
+  description?: string;
+}
+
+const { title = site.title, description = site.description } = Astro.props;
+---
+
+<!doctype html>
+<html lang={site.lang}>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="generator" content={Astro.generator} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="/img/oleksandra-portrait.webp" />
+    <meta property="og:locale" content="uk_UA" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Unbounded:wght@400;500;600;700&family=Onest:wght@400;500;600;700&display=swap"
+    />
+
+    <script is:inline>
+      // Приховувати елементи до появи можна лише коли анімації реально запустяться.
+      // Таймер — страховка: якщо модуль не завантажився, контент усе одно показується.
+      (function () {
+        var root = document.documentElement;
+        if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+        root.classList.add('anim-ready');
+        setTimeout(function () {
+          if (!root.dataset.animInit) root.classList.remove('anim-ready');
+        }, 3000);
+      })();
+    </script>
+  </head>
+
+  <body>
+    <slot />
+  </body>
+</html>

@@ -1,0 +1,104 @@
+---
+import { reviewsSection } from '../data/content';
+---
+
+<section class="reviews band" id="reviews">
+  <div class="shell">
+    <h2 class="reviews__title" data-reveal>{reviewsSection.title}</h2>
+
+    <div class="reviews__grid">
+      {
+        reviewsSection.items.map((item) => (
+          <figure class="review" data-reveal>
+            <figcaption class="review__cap">
+              <span class="review__name">{item.name}</span>
+              <span class="review__note">{item.note}</span>
+            </figcaption>
+            <div class="review__shot">
+              <img src={item.image} alt={`Відгук — ${item.name}`} loading="lazy" decoding="async" />
+            </div>
+          </figure>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .reviews {
+    background: var(--color-cream-deep);
+  }
+
+  .reviews__title {
+    font-size: var(--text-section);
+    margin-bottom: clamp(2.5rem, 5vw, 4rem);
+  }
+
+  .reviews__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .review {
+    background: #fff;
+    border: 1px solid rgb(20 30 25 / 0.07);
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 22px 45px -34px rgb(20 30 25 / 0.75);
+    transition: transform 0.5s var(--ease-out-soft);
+  }
+
+  .review:hover {
+    transform: translateY(-5px);
+  }
+
+  /* Скриншоти різної висоти: підрізаємо до спільної та розтушовуємо низ */
+  .review__shot {
+    position: relative;
+    max-height: 30rem;
+    overflow: hidden;
+  }
+
+  .review__shot::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    bottom: 0;
+    height: 5rem;
+    background: linear-gradient(to bottom, transparent, #fff);
+    pointer-events: none;
+  }
+
+  .review img {
+    width: 100%;
+    display: block;
+  }
+
+  .review__cap {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.5rem;
+    padding: 1rem 1.1rem;
+    border-bottom: 1px solid rgb(20 30 25 / 0.07);
+  }
+
+  .review__name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: -0.02em;
+  }
+
+  .review__note {
+    font-size: 0.78rem;
+    color: rgb(20 30 25 / 0.55);
+  }
+
+  @media (min-width: 700px) {
+    .reviews__grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+</style>

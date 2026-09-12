@@ -1,0 +1,137 @@
+---
+import { benefitsSection } from '../data/content';
+import CtaButton from './CtaButton.astro';
+---
+
+<section class="benefits band" id="benefits">
+  <div class="shell benefits__inner">
+    <div class="benefits__aside">
+      <h2 class="benefits__title" data-reveal>{benefitsSection.title}</h2>
+      <img
+        class="benefits__art"
+        src="/img/checklist.webp"
+        alt=""
+        loading="lazy"
+        decoding="async"
+        data-reveal
+        data-float
+      />
+      <div data-reveal>
+        <CtaButton label={benefitsSection.cta} class="benefits__cta" />
+      </div>
+    </div>
+
+    <ul class="benefits__list">
+      {
+        benefitsSection.items.map((item) => (
+          <li class="benefit" data-reveal>
+            <span class="benefit__check" aria-hidden="true">
+              <svg width="14" height="11" viewBox="0 0 14 11" fill="none">
+                <path
+                  d="M1 5.6 4.9 9.5 13 1.4"
+                  stroke="currentColor"
+                  stroke-width="2.2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                />
+              </svg>
+            </span>
+            <div>
+              <h3 class="benefit__title">{item.title}</h3>
+              <p class="benefit__text">{item.text}</p>
+            </div>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</section>
+
+<style>
+  .benefits__inner {
+    display: grid;
+    gap: clamp(3rem, 6vw, 5rem);
+    align-items: start;
+  }
+
+  .benefits__title {
+    font-size: var(--text-section);
+  }
+
+  .benefits__art {
+    display: none;
+    width: 100%;
+    max-width: 320px;
+    margin-top: 2.5rem;
+  }
+
+  .benefits__cta {
+    margin-top: 2.5rem;
+  }
+
+  .benefits__list {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    list-style: none;
+  }
+
+  .benefit {
+    display: flex;
+    gap: 1.25rem;
+    padding-block: 1.6rem;
+    border-bottom: 1px solid rgb(20 30 25 / 0.1);
+  }
+
+  .benefit:first-child {
+    padding-top: 0;
+  }
+
+  .benefit:last-child {
+    border-bottom: 0;
+    padding-bottom: 0;
+  }
+
+  .benefit__check {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background: var(--color-forest);
+    color: var(--color-cream);
+    translate: 0 2px;
+    transition: transform 0.45s var(--ease-out-soft);
+  }
+
+  .benefit:hover .benefit__check {
+    transform: scale(1.12) rotate(-8deg);
+  }
+
+  .benefit__title {
+    font-size: clamp(1.05rem, 1.6vw, 1.22rem);
+    margin-bottom: 0.4rem;
+  }
+
+  .benefit__text {
+    font-size: 0.95rem;
+    color: rgb(20 30 25 / 0.68);
+  }
+
+  @media (min-width: 900px) {
+    .benefits__inner {
+      grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+      gap: 5rem;
+    }
+
+    .benefits__aside {
+      position: sticky;
+      top: 7rem;
+    }
+
+    .benefits__art {
+      display: block;
+    }
+  }
+</style>

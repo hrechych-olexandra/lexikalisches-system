@@ -1,0 +1,62 @@
+---
+import { finalCta, hero } from '../data/content';
+import CtaButton from './CtaButton.astro';
+---
+
+<section class="final band">
+  <div class="shell final__inner">
+    <img
+      class="final__avatar"
+      src={hero.portrait}
+      alt=""
+      loading="lazy"
+      decoding="async"
+      data-reveal
+    />
+
+    <h2 class="final__title" data-reveal>
+      {finalCta.title}
+      <em>{finalCta.titleAccent}</em>
+    </h2>
+
+    <div data-reveal>
+      <CtaButton label={finalCta.cta} variant="cream" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .final {
+    background: var(--color-forest);
+    color: var(--color-cream);
+    text-align: center;
+  }
+
+  .final__inner {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.75rem;
+  }
+
+  .final__avatar {
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+    object-fit: cover;
+    object-position: center 25%;
+    border: 3px solid rgb(229 228 200 / 0.5);
+  }
+
+  .final__title {
+    font-size: var(--text-section);
+    max-width: 16ch;
+  }
+
+  .final__title em {
+    display: block;
+    font-style: italic;
+    font-weight: 400;
+    color: var(--color-gold);
+  }
+</style>

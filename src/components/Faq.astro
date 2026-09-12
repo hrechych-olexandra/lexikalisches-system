@@ -1,0 +1,115 @@
+---
+import { faqSection } from '../data/content';
+---
+
+<section class="faq band" id="faq">
+  <div class="shell faq__inner">
+    <h2 class="faq__title" data-reveal>{faqSection.title}</h2>
+
+    <div class="faq__list">
+      {
+        faqSection.items.map((item) => (
+          <details class="qa" data-qa>
+            <summary class="qa__q">
+              <span>{item.q}</span>
+              <span class="qa__icon" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none">
+                  <path d="M7 1v12M1 7h12" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
+                </svg>
+              </span>
+            </summary>
+            <div class="qa__body">
+              <p>{item.a}</p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq__inner {
+    display: grid;
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  .faq__title {
+    font-size: var(--text-section);
+  }
+
+  .faq__list {
+    border-top: 1px solid rgb(20 30 25 / 0.12);
+  }
+
+  .qa {
+    border-bottom: 1px solid rgb(20 30 25 / 0.12);
+  }
+
+  .qa__q {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    padding-block: 1.35rem;
+    cursor: pointer;
+    list-style: none;
+    font-family: var(--font-display);
+    font-size: clamp(1rem, 1.6vw, 1.14rem);
+    font-weight: 500;
+    letter-spacing: -0.02em;
+    transition: color 0.3s var(--ease-out-soft);
+  }
+
+  .qa__q::-webkit-details-marker {
+    display: none;
+  }
+
+  .qa__q:hover {
+    color: var(--color-forest);
+  }
+
+  .qa__icon {
+    flex: none;
+    display: grid;
+    place-items: center;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 1px solid rgb(20 30 25 / 0.18);
+    color: var(--color-forest);
+    transition: transform 0.45s var(--ease-out-soft);
+  }
+
+  .qa[open] .qa__icon {
+    transform: rotate(135deg);
+    background: var(--color-forest);
+    color: var(--color-cream);
+    border-color: var(--color-forest);
+  }
+
+  .qa__body {
+    overflow: hidden;
+  }
+
+  .qa__body p {
+    padding-bottom: 1.5rem;
+    padding-right: 3rem;
+    font-size: 0.96rem;
+    color: rgb(20 30 25 / 0.7);
+    max-width: 52rem;
+  }
+
+  @media (min-width: 900px) {
+    .faq__inner {
+      grid-template-columns: minmax(0, 0.6fr) minmax(0, 1.4fr);
+      gap: 5rem;
+    }
+
+    .faq__title {
+      position: sticky;
+      top: 7rem;
+    }
+  }
+</style>
