@@ -57,6 +57,19 @@ Lenis, reveal секцій, паралакс фото, магнітні кноп
 
 Статика, тож підходить будь-який хостинг.
 
+- **GitHub Pages** — уже налаштовано. Пуш у `main` запускає
+  [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml), сайт з'являється на
+  `https://hrechych-olexandra.github.io/lexikalisches-system/`. Перший запуск: у
+  Settings → Pages репозиторію обрати Source → **GitHub Actions**.
 - **Netlify** — конфіг уже є (`netlify.toml`), нічого налаштовувати не треба.
 - **Vercel** — визначає Astro автоматично; команда `npm run build`, тека `dist`.
 - **Свій хостинг** — `npm run build` і залийте вміст `dist/`.
+
+### Про підшлях GitHub Pages
+
+Проєктна сторінка GitHub Pages віддає сайт не з кореня домену, а з
+`/lexikalisches-system/`. `astro.config.mjs` вмикає це автоматично лише всередині
+GitHub Actions (`base: '/'` для Netlify/Vercel/локальної збірки, підшлях — коли
+`GITHUB_ACTIONS=true`). Усі внутрішні посилання на зображення й favicon ідуть через
+`withBase()` з [`src/lib/base.ts`](src/lib/base.ts) — новий локальний файл
+підключайте так само, а не прямим `/img/...`.

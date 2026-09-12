@@ -1,6 +1,7 @@
 ---
 import '../styles/global.css';
-import { site } from '../data/content';
+import { site, hero } from '../data/content';
+import { withBase } from '../lib/base';
 
 interface Props {
   title?: string;
@@ -15,7 +16,7 @@ const { title = site.title, description = site.description } = Astro.props;
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/svg+xml" href={withBase('/favicon.svg')} />
     <title>{title}</title>
     <meta name="description" content={description} />
     <meta name="generator" content={Astro.generator} />
@@ -23,7 +24,7 @@ const { title = site.title, description = site.description } = Astro.props;
     <meta property="og:type" content="website" />
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="/img/oleksandra-portrait.webp" />
+    <meta property="og:image" content={hero.portrait} />
     <meta property="og:locale" content="uk_UA" />
     <meta name="twitter:card" content="summary_large_image" />
 

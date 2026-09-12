@@ -1,6 +1,8 @@
 // Уся копія лендінгу в одному місці.
 // Блоки, позначені DRAFT, — нові, їх немає на поточному сайті; правте вільно.
 
+import { withBase } from '../lib/base';
+
 export const site = {
   title: 'Покрокова система вивчення лексики від А до Я',
   description:
@@ -37,9 +39,9 @@ export const hero = {
       ', яка допоможе перестати хаотично збирати слова й нарешті зрозуміти, що з ними робити, щоб вони не залишалися лише в нотатках.',
   },
   cta: 'ХОЧУ СИСТЕМУ',
-  portrait: '/img/oleksandra-portrait.webp',
+  portrait: withBase('/img/oleksandra-portrait.webp'),
   // Обтравлене фото (PNG з прозорим тлом) — підмініть цей файл, щоб замінити героя
-  photo: '/img/oleksandra-hero.webp',
+  photo: withBase('/img/oleksandra-hero.webp'),
   photoAlt: 'Олександра Гречич',
 };
 
@@ -62,7 +64,7 @@ export const wordChips = [
 
 export const painSection = {
   title: 'Для кого цей вебінар',
-  video: { id: 'alpqdWLrNLI', cover: '/img/yt-cover.jpg', caption: 'Чому я їх забуваю' },
+  video: { id: 'alpqdWLrNLI', cover: withBase('/img/yt-cover.jpg'), caption: 'Чому я їх забуваю' },
   items: [
     {
       title: 'Ви постійно забуваєте вивчені слова',
@@ -111,7 +113,7 @@ export const programSection = {
   eyebrow: 'Програма',
   title: '5 кроків від хаосу до системи',
   lead: '1 година 19 хвилин, розкладені на п’ять питань, які вирішують долю кожного нового слова.',
-  slides: ['/img/slide-1.webp', '/img/slide-2.webp', '/img/slide-3.webp'],
+  slides: ['/img/slide-1.webp', '/img/slide-2.webp', '/img/slide-3.webp'].map(withBase),
   steps: [
     {
       question: 'Що варто вчити?',
@@ -157,7 +159,7 @@ export const formatSection = {
 export const aboutSection = {
   title: 'Хто я?',
   name: 'Мене звати Олександра.',
-  photo: '/img/oleksandra-1.webp',
+  photo: withBase('/img/oleksandra-1.webp'),
   photoAlt: 'Олександра Гречич, викладачка німецької мови',
   paragraphs: [
     'Я викладачка німецької мови з 7+ роками досвіду роботи з дорослими та авторка YouTube-каналу «Німецька з Олександрою Гречич».',
@@ -175,10 +177,18 @@ export const aboutSection = {
 export const reviewsSection = {
   title: 'Ось що кажуть мої учні',
   items: [
-    { name: 'Анна', image: '/img/review-anna.webp', note: 'з нуля до B2 за 2 роки' },
-    { name: 'Інна', image: '/img/review-inna.webp', note: 'про системність і дисципліну' },
-    { name: 'Георгій', image: '/img/review-heorhii.webp', note: 'навчається в університеті Німеччини' },
-    { name: 'Поліна', image: '/img/review-polina.webp', note: 'про підготовку до кожного уроку' },
+    { name: 'Анна', image: withBase('/img/review-anna.webp'), note: 'з нуля до B2 за 2 роки' },
+    { name: 'Інна', image: withBase('/img/review-inna.webp'), note: 'про системність і дисципліну' },
+    {
+      name: 'Георгій',
+      image: withBase('/img/review-heorhii.webp'),
+      note: 'навчається в університеті Німеччини',
+    },
+    {
+      name: 'Поліна',
+      image: withBase('/img/review-polina.webp'),
+      note: 'про підготовку до кожного уроку',
+    },
   ],
 };
 

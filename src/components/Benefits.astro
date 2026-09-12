@@ -1,5 +1,6 @@
 ---
 import { benefitsSection } from '../data/content';
+import { withBase } from '../lib/base';
 import CtaButton from './CtaButton.astro';
 ---
 
@@ -9,7 +10,7 @@ import CtaButton from './CtaButton.astro';
       <h2 class="benefits__title" data-reveal>{benefitsSection.title}</h2>
       <img
         class="benefits__art"
-        src="/img/checklist.webp"
+        src={withBase('/img/checklist.webp')}
         alt=""
         loading="lazy"
         decoding="async"
