@@ -11,7 +11,7 @@ export const site = {
   url: 'https://systema-leksyky.send-pulse.com/',
 };
 
-export const payUrl = 'https://secure.wayforpay.com/payment/s64de0beb6059';
+export const payUrl = 'https://cloud.umami.is/q/OmS8G37sf';
 
 export const socials = {
   instagram: 'https://www.instagram.com/oleksandra.hrechych/',
